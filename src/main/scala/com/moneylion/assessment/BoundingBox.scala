@@ -1,7 +1,5 @@
 package com.moneylion.assessment
 
-import com.moneylion.assessment.Main.lines
-
 import scala.annotation.tailrec
 
 class BoundingBox {
@@ -47,15 +45,6 @@ class BoundingBox {
       first.topLeft.x > second.btmRight.x ||
       first.btmRight.y < second.topLeft.y ||
       first.topLeft.y > second.btmRight.y)
-  }
-
-  private def areOverlapping1(first: Box)(second: Box) = {
-    val secondXRange = second.topLeft.x to second.btmRight.x
-    val secondYRange = second.topLeft.y to second.btmRight.y
-    ((secondXRange contains first.topLeft.x) && (secondYRange contains first.btmRight.y)) || // checking bottom left corner
-      ((secondXRange contains first.btmRight.x) && (secondYRange contains first.btmRight.y)) || // checking bottom right corner
-      ((secondXRange contains first.topLeft.x) && (secondYRange contains first.topLeft.y)) || // checking top left corner
-      ((secondXRange contains first.btmRight.x) && (secondYRange contains first.topLeft.y)) // checking top right corner
   }
 
   def findLargestBoxes(matrix: Array[Array[Char]]): List[Box] = {
